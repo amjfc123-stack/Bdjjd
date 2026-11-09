@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Noto+Color+Emoji&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;font-family:'Cairo',sans-serif;color:#fff;
+ background:radial-gradient(ellipse at 50% 0%,#1d3b8f 0%,#0b1640 45%,#050a1f 100%);position:relative}
+.f{font-family:'Noto Color Emoji';font-size:34px;line-height:1}
+.top{padding:150px 60px 0;text-align:center}
+.tag{display:inline-block;background:#ffd400;color:#0b1640;font-weight:900;font-size:34px;padding:6px 30px;border-radius:40px;letter-spacing:1px}
+h1{font-size:76px;font-weight:900;line-height:1.25;margin-top:22px}
+h1 span{color:#ffd400}
+.alert{margin:26px auto 0;width:max-content;background:#c8102e;font-weight:800;font-size:38px;padding:10px 34px;border-radius:18px;box-shadow:0 8px 30px rgba(200,16,46,.5)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;padding:40px 50px 0}
+.row{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.12);border-radius:18px;padding:10px 16px;height:78px}
+.n{flex:0 0 54px;height:54px;border-radius:14px;background:#24357a;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:32px}
+.name{font-weight:700;font-size:31px;white-space:nowrap;flex:1}
+.g .n{background:linear-gradient(135deg,#ffe36b,#d4a100);color:#1a1300}
+.s .n{background:linear-gradient(135deg,#f1f1f1,#9da3ad);color:#111}
+.b .n{background:linear-gradient(135deg,#f0a35e,#a0521a);color:#1a0b00}
+.hl{border-color:#ffd400;background:rgba(255,212,0,.16)}
+.hl .name{color:#ffd400}
+.src{position:absolute;bottom:40px;width:100%;text-align:center;font-size:28px;color:rgba(255,255,255,.55);font-weight:700}
+</style></head><body>
+<div class="top">
+  <div class="tag">Opta Power Rankings</div>
+  <h1>تصنيف <span>Opta</span> لأفضل<br>20 دوريًا في العالم</h1>
+  <div class="alert"><span class="f" style="font-size:36px">🇸🇦</span>&nbsp; الدوري السعودي خارج القائمة!</div>
+</div>
+<div class="grid" id="g"></div>
+<div class="src">المصدر: Opta Analyst</div>
+<script>
+const L=[["🏴󠁧󠁢󠁥󠁮󠁧󠁿","الإنجليزي الممتاز"],["🇪🇸","الإسباني"],["🇩🇪","الألماني"],["🇮🇹","الإيطالي"],["🇫🇷","الفرنسي"],["🇧🇷","البرازيلي"],["🇧🇪","البلجيكي"],["🇦🇷","الأرجنتيني"],["🇵🇹","البرتغالي"],["🏴󠁧󠁢󠁥󠁮󠁧󠁿","الدرجة الأولى الإنجليزي"],["🇹🇷","التركي"],["🇳🇱","الهولندي"],["🇳🇴","النرويجي"],["🇩🇰","الدنماركي"],["🇵🇱","البولندي"],["🇲🇽","المكسيكي"],["🇺🇸","الأمريكي"],["🇨🇴","الكولومبي"],["🇪🇨","الإكوادوري"],["🇪🇸","الدرجة الثانية الإسباني"]];
+const g=document.getElementById('g');
+// column-major order: right column 1-10, left column 11-20
+for(let i=0;i<10;i++)for(const j of [i,i+10]){const[f,n]=L[j];const d=document.createElement('div');
+ d.className='row'+(j==0?' g':j==1?' s':j==2?' b':'')+(j==6||j==7?' hl':'');
+ d.innerHTML=`<div class="n">${j+1}</div><span class="f">${f}</span><div class="name">${n}</div>`;g.appendChild(d);}
+</script></body></html>
